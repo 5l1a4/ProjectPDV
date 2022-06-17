@@ -7,20 +7,20 @@ package com.analistas.projectpdv.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
  * @author Micholini
  */
-
 @Controller
-public class HomeController {
+@RequestMapping("/ventas")
+public class VentaController {
     
+    @GetMapping("/listado")
+    public String listVentas(Model model){
     
-    @GetMapping({"/", "/home"})
-    public String home(Model model){
-        
-        model.addAttribute("homeAct", true);
-        return "home";
+        model.addAttribute("ventaAct", true);
+        return"ventas/list";
     }
 }
