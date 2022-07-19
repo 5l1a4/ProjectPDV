@@ -18,9 +18,8 @@ public class HomeController {
     
     
     @GetMapping({"/", "/home"})
-    public String home(Model model){
+    public String home(){
         
-        model.addAttribute("homeAct", true);
         return "home";
     }
 }

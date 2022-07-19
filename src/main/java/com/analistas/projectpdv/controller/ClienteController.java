@@ -18,9 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ClienteController {
     
     @GetMapping("/listado")
-    public String listClientes(Model model){
+    public String listClientes(){
 
-        model.addAttribute("clienteAct", true);
         return "clientes/list";
     }
     
