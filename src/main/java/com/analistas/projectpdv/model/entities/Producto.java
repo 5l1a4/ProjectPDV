@@ -28,7 +28,7 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "cod_barras", length = 13) //varchar(13);
+    @Column(name = "cod_bar", length = 13) //varchar(13);
     private String codigoBarras;
     
     @NotBlank(message = "La descripción es requerida...") //not null

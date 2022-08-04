@@ -4,6 +4,9 @@
  */
 package com.analistas.projectpdv.controller;
 
+import com.analistas.projectpdv.model.entities.Producto;
+import com.analistas.projectpdv.model.service.IProductoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +20,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/productos")
 public class ProductoController {
     
-    @GetMapping("/listado")
-    public String listCompras(){
+    @Autowired
+    IProductoService productoService;
     
+    @GetMapping("/listado")
+    public String listarProductos(Model model){
+    
+        model.addAttribute("productos", productoService.buscarTodos());
+        
         return "productos/list";
-    };
+    }
+    
+    @GetMapping("/nuevo")
+    public String nuevoProducto(Model model){
+    
+    
+        model.addAttribute("producto", new Producto());
+        return"productos/form";
+    }
+    
+    @GetMapping("/guardar")
+    public String guardarProducto(Model model){
+    
+        
+        return"producto/form";
+    }
 }

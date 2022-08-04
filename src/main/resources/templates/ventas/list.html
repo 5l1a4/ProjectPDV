@@ -12,12 +12,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title th:text="#{titulo}">TODO supply a title</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <!-- Style ventas -->
+        <link th:href="@{/css/style.ventas.css}" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
-        <div layout:fragment="contenido">
-            <main>
-                <p> listado de ventas</p>
-            </main>
+        <div layout:fragment="contenido" class="ventas">
+            <p> listado de ventas</p>
         </div>
+        
+        <script th:fragment="js"></script>
     </body>
 </html>

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ClienteController {
     
     @GetMapping("/listado")
-    public String listClientes(){
+    public String listarClientes(){
 
         return "clientes/list";
     }

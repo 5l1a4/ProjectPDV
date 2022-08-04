@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html
+    lang="es"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout/layout}">
+    <head>
+        <title th:text="#{titulo}">TODO supply a title</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <!-- Style form -->
+        <link th:href="@{/css/style.productos.form.css}" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        
+        <div layout:fragment="contenido" class="cuerpo">
+            
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-7">
+                        <div class="card" style="border-radius: 1rem;">
+                            <div class="card-body p-5">
+
+                                <h2 class="mb-4 text-left">Nuevo Producto</H2>
+                                <form>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <input type="text" id="form6Example1" class="form-control" />
+                                            <label class="form-label" for="form6Example1">Nombre</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <input type="text" id="form6Example3" class="form-control" />
+                                        <label class="form-label" for="form6Example3">Precio</label>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <input type="text" id="form6Example4" class="form-control" />
+                                        <label class="form-label" for="form6Example4">Cantidad</label>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <input type="email" id="form6Example5" class="form-control" />
+                                        <label class="form-label" for="form6Example5">Codigo De Barra</label>
+                                    </div>
+
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-secondary btn-rounded btn-block">
+                                        Guardar Producto
+                                    </button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script th:fragment="js"></script>
+    </body>
+</html>

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class VentaController {
     
     @GetMapping("/listado")
-    public String listVentas(){
+    public String listarVentas(){
         
         return"ventas/list";
     }
