@@ -17,50 +17,74 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <link th:href="@{/css/style.productos.form.css}" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        
         <div layout:fragment="contenido" class="cuerpo">
             
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-lg-7">
-                        <div class="card" style="border-radius: 1rem;">
-                            <div class="card-body p-5">
+            <div class="container-fluid mt-2">
+                <div class="row justify-content-left">
+                    <div class="col col-lg-5">
+                        <div class="card">
+                            <form th:action="@{/productos/form}" method="post" th:object="${producto}">
+                                
+                                <div class="card-header">
+                                    <h2 class="m-2">Nuevo Producto</h2>
+                                </div>
 
-                                <h2 class="mb-4 text-left">Nuevo Producto</H2>
-                                <form>
-                                    <div class="col-md-6 mb-4">
-                                        <div class="form-outline">
-                                            <input type="text" id="form6Example1" class="form-control" />
-                                            <label class="form-label" for="form6Example1">Nombre</label>
+                                <div class="card-body p-4">
+                                    <div class="col-md-7 mb-4">
+                                        <div class="form">
+                                            <label for="des" class="form-label">Descripción</label>
+                                            <input id="des" type="text" class="form-control" 
+                                                   th:field="*{descripcion}" required="true"/>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6 mb-4">
-                                        <input type="text" id="form6Example3" class="form-control" />
-                                        <label class="form-label" for="form6Example3">Precio</label>
+                                    <div class="col-md-7 mb-4">
+                                        <div class="form">
+                                            <label for="codBarras" class="form-label">Cod.Barras</label>
+                                            <input id="codBarras" type="text" class="form-control" 
+                                                   th:field="*{codigoBarras}" required="true" placeholder="Eje: 1006736351235" />
+                                        </div>
                                     </div>
 
-                                    <div class="col-md-6 mb-4">
-                                        <input type="text" id="form6Example4" class="form-control" />
-                                        <label class="form-label" for="form6Example4">Cantidad</label>
+                                    <div class="col-md-7 mb-4">
+                                        <div class="form">
+                                            <label for="precio" class="form-label">Precio</label>
+                                            <input id="precio" type="text" class="form-control" 
+                                                   th:field="*{precio}" required="true"/>
+                                        </div>
                                     </div>
 
-                                    <div class="col-md-6 mb-4">
-                                        <input type="email" id="form6Example5" class="form-control" />
-                                        <label class="form-label" for="form6Example5">Codigo De Barra</label>
+                                    <div class="col-md-7 mb-4">
+                                        <div class="form">
+                                            <label for="stock" class="form-label">Existencia</label>
+                                            <input id="stock" type="number" class="form-control" 
+                                                   th:field="*{stock}" />
+                                        </div>
                                     </div>
 
-                                    <!-- Submit button -->
-                                    <button type="submit" class="btn btn-secondary btn-rounded btn-block">
+                                    <div class="col-md-7 mb-4">
+                                        <div class="form">
+                                            <label for="linkImagen" class="form-label">Imagen</label>
+                                            <input id="linkImagen" type="url" class="form-control" 
+                                                   th:field="*{linkImagen}" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer p-4">
+                                    <button type="submit" class="btn btn-primary btn-success btn-block">
                                         Guardar Producto
                                     </button>
-                                </form>
-
-                            </div>
+                                    <a th:href="@{/productos/listado}" class="btn btn-alert btn-secondary btn-block ms-3">
+                                        Cancelar
+                                    </a>
+                                </div>
+                            </form>       
                         </div>
+                        
                     </div>
                 </div>
-            </div>
+            </div>   
 
         </div>
         <script th:fragment="js"></script>
