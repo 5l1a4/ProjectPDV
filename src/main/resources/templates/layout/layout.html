@@ -10,7 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     >
 <head>
-    <title th:text="#{titulo}">TODO supply a title</title>
+    <title th:text="#{title}"></title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
@@ -45,7 +45,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
         <div class="namePage">
             <i class="fa-solid fa-shirt"></i>
-            <h5>Estilo Sublime</h5>
+            <h5 th:text="#{title}"></h5>
         </div>
 
         <div class="optionsMenu">
@@ -53,28 +53,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <a th:href="@{/home}" >
                 <div class="option">
                     <i class="fa-solid fa-house-chimney"></i>
-                    <h5>inicio</h5>
+                    <h5 th:text="#{titleIni}"></h5>
                 </div>
             </a>   
                 
             <a th:href="@{/productos/listado}">
                 <div class="option">
                     <i class="fa-solid fa-book"></i>
-                    <h5>Productos</h5>
+                    <h5 th:text="#{titlePro}"></h5>
                 </div>
             </a>
 
             <a th:href="@{/ventas/listado}">
                 <div class="option">
                     <i class="fa-solid fa-money-bill-1-wave"></i>
-                    <h5>Ventas</h5>
+                    <h5 th:text="#{titleVen}"></h5>
                 </div>
             </a>
 
             <a th:href="@{/clientes/listado}">
                 <div class="option">
                     <i class="fa-solid fa-people-group"></i>
-                    <h5>Clientes</h5>
+                    <h5 th:text="#{titleCli}"></h5>
                 </div>
             </a>
 
