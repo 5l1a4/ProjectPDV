@@ -26,13 +26,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <form th:action="@{/productos/form}" method="post" th:object="${producto}">
                                 
                                 <div class="card-header">
-                                    <h2 class="m-2">Nuevo Producto</h2>
+                                    <h2 class="m-2" th:text="#{newPro}"></h2>
                                 </div>
 
                                 <div class="card-body p-4">
                                     <div class="col-md-7 mb-4">
                                         <div class="form">
-                                            <label for="des" class="form-label">Descripción</label>
+                                            <label for="des" class="form-label" th:text="#{desPro}"></label>
                                             <input id="des" type="text" class="form-control" 
                                                    th:field="*{descripcion}" required="true"/>
                                         </div>
@@ -40,7 +40,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                                     <div class="col-md-7 mb-4">
                                         <div class="form">
-                                            <label for="codBarras" class="form-label">Cod.Barras</label>
+                                            <label for="codBarras" class="form-label" th:text="#{codPro}"></label>
                                             <input id="codBarras" type="text" class="form-control" 
                                                    th:field="*{codigoBarras}" required="true" placeholder="Eje: 1006736351235" />
                                         </div>
@@ -48,7 +48,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                                     <div class="col-md-7 mb-4">
                                         <div class="form">
-                                            <label for="precio" class="form-label">Precio</label>
+                                            <label for="precio" class="form-label" th:text="#{prePro}"></label>
                                             <input id="precio" type="text" class="form-control" 
                                                    th:field="*{precio}" required="true"/>
                                         </div>
@@ -56,7 +56,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                                     <div class="col-md-7 mb-4">
                                         <div class="form">
-                                            <label for="stock" class="form-label">Existencia</label>
+                                            <label for="stock" class="form-label" th:text="#{exiPro}"></label>
                                             <input id="stock" type="number" class="form-control" 
                                                    th:field="*{stock}" />
                                         </div>
@@ -64,21 +64,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                                     <div class="col-md-7 mb-4">
                                         <div class="form">
-                                            <label for="linkImagen" class="form-label">Imagen</label>
+                                            <label for="linkImagen" class="form-label" th:text="#{imgPro}"></label>
                                             <input id="linkImagen" type="url" class="form-control" 
                                                    th:field="*{linkImagen}" />
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="card-footer p-4">
-                                    <button type="submit" class="btn btn-primary btn-success btn-block">
-                                        Guardar Producto
+                                <div class="card-footer p-4 d-grid gap-2 d-md-block">
+                                    
+                                    <button type="submit" class="btn btn-primary btn-success btn-block"
+                                            th:text="#{savePro}">
                                     </button>
-                                    <a th:href="@{/productos/listado}" class="btn btn-alert btn-secondary btn-block ms-3">
-                                        Cancelar
+                                    <a th:href="@{/productos/listado}" class="btn btn-alert btn-secondary 
+                                       btn-block" th:text="#{canPro}">
                                     </a>
+                                    
                                 </div>
+                                
                             </form>       
                         </div>
                         

@@ -112,5 +112,4 @@ public class Producto {
         return id + " = " + descripcion + " = " + precio;
     }
     
-    
 }

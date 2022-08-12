@@ -34,39 +34,49 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             <th>#</th>
                                             <th style="width: 10px;">Imagen</th>
                                             <th>Cod Barra</th>
-                                            <th>Producto</th>
+                                            <th>Productos</th>
                                             <th>Precio</th> 
                                             <th>Existencias</th>
-                                            <th >Opciones</th>
+                                            <th>Opciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="p : ${productos}">
                                             <td th:text="${p.id}"></td>
                                             <td>
-                                                <img alt="Sin Imagen :/" th:src="@{${p.linkImagen}}" height="100px"/>
+                                                <img alt="Sin Imagen :/" th:src="@{${p.linkImagen}}" height="150px"/>
                                             </td>
                                             <td th:text="${p.codigoBarras}"></td>
                                             <td th:text="${p.descripcion}"></td>
                                             <td th:text="${p.precio}"></td>
                                             <td th:text="${p.stock}"></td>
                                             <td>
-                                                <a class="btn btn-primary float-end m-2"
-                                                   data-bs-toogle="tooltip" data-bs-placement="bottom">
-                                                    <i class="fa-solid fa-pen-to-square"></i>
-                                                </a>
-                                                <a class="btn btn-danger float-end m-2"
-                                                   data-bs-toogle="tooltip" data-bs-placement="bottom">
-                                                    <i class="fa-solid fa-trash-can"></i>
-                                                </a>
+                                                <div class="d-grid gap-2 d-md-block" >
+                                                    
+                                                    <a th:href="@{/productos/editar/} + ${p.id}"
+                                                       th:text="#{editPro}" class="btn btn-warning m-2"
+                                                       data-bs-toogle="tooltip" data-bs-placement="bottom">
+                                                    </a>
+                                                    
+                                                    <a th:href="@{/productos/del/} + ${p.id}" 
+                                                       th:text="#{delPro}" class="btn btn-danger m-2"
+                                                       data-bs-toogle="tooltip" data-bs-placement="bottom"
+                                                       onclick="return confirm('¿Estas seguro de Borrar el Producto?');">
+                                                    </a>
+                                                    
+                                                    <a class="btn btn-success m-2" data-bs-toogle="tooltip" 
+                                                       data-bs-placement="bottom" th:text="#{inhPro}">
+                                                    </a>
+                                                    
+                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table> 
                             </div>
                             
-                            <div class="card-footer">
-                                <a th:href="@{/productos/nuevo}" class="btn btn-primary float-end" 
+                            <div class="card-footer ">
+                                <a th:href="@{/productos/nuevo}" class="btn btn-outline-primary float-end" 
                                    th:text="#{newPro}">
                                 </a>
                             </div>
@@ -78,6 +88,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             
         </div>
         <!-- JS -->
-                <script th:fragment="js" th:src="@{/js/productos.js}"></script>
+<!--        <script th:fragment="js" th:src="@{/js/productos.js}"></script>-->
+            <script th:src="@{/js/productos.js}" th:fragment="js"></script>
     </body>
 </html>

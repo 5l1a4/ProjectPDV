@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/javascript.js to edit this template
  */
 
+
+/////////////////////////dataTables////////////////////
 $(document).ready(function () {
     $('#tablaProductos').DataTable( {
         lengthMenu: [3, 6, 9, 12, 24, 50],
@@ -22,5 +24,4 @@ $(document).ready(function () {
         }
     });
 });
-
-    
+//////////////////////////Sweet Alert2/////////////////////////////    

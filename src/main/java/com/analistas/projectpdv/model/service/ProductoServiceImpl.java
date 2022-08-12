@@ -28,13 +28,15 @@ public class ProductoServiceImpl implements IProductoService {
     }
 
     @Override
-    public Producto buscarPor(String criterio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Transactional(readOnly = true)
+    public List<Producto> buscarPor(String criterio) {
+        return productoRepo.buscarPorCriterio(criterio);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Producto buscarPorId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return productoRepo.findById(id).orElse(null);
     }
 
     @Override
@@ -44,8 +46,9 @@ public class ProductoServiceImpl implements IProductoService {
     }
 
     @Override
+    @Transactional // sin declarar readOnly = false, por defecto es false.
     public void borrarPorId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        productoRepo.deleteById(id);
     }
     
 }
