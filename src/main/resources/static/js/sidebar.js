@@ -45,3 +45,16 @@ window.addEventListener("resize", function(){
     }
 
 });
+
+
+
+///////////////////// funcionamiento de los Botones /////////////////////////////////////////////////
+
+setInterval("cerrar()", 3000);
+
+const cerrar = () => {
+    $(".alert").delay(500).slideUp(500, () => {
+        $(this).hide();
+    });
+}
+        

@@ -20,8 +20,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <div layout:fragment="contenido" class="cuerpo">
             
             <div class="container-fluid mt-2">
-                <div class="row justify-content-left">
-                    <div class="col col-lg-5">
+                <div class="row justify-content-center">
+                    <div class="col ">
                         <div class="card">
                             <form th:action="@{/productos/form}" method="post" th:object="${producto}">
                                 
@@ -34,7 +34,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                         <div class="form">
                                             <label for="des" class="form-label" th:text="#{desPro}"></label>
                                             <input id="des" type="text" class="form-control" 
-                                                   th:field="*{descripcion}" required="true"/>
+                                                   th:field="*{descripcion}" th:errorclass="'form-control alert-danger'"/>
+                                            <small class="form-text text-danger" th:errors="*{descripcion}" 
+                                                   th:if="${#fields.hasErrors('descripcion')}"></small>
                                         </div>
                                     </div>
 
@@ -42,7 +44,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                         <div class="form">
                                             <label for="codBarras" class="form-label" th:text="#{codPro}"></label>
                                             <input id="codBarras" type="text" class="form-control" 
-                                                   th:field="*{codigoBarras}" required="true" placeholder="Eje: 1006736351235" />
+                                                   th:field="*{codigoBarras}" placeholder="Ejemplo: 1006736351235" />
                                         </div>
                                     </div>
 
@@ -50,7 +52,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                         <div class="form">
                                             <label for="precio" class="form-label" th:text="#{prePro}"></label>
                                             <input id="precio" type="text" class="form-control" 
-                                                   th:field="*{precio}" required="true"/>
+                                                   th:field="*{precio}" th:errorclass="'form-control alert-danger'"/>
+                                            <small class="form-text text-danger" th:errors="*{precio}" 
+                                                   th:if="${#fields.hasErrors('precio')}"></small>
                                         </div>
                                     </div>
 
@@ -58,7 +62,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                         <div class="form">
                                             <label for="stock" class="form-label" th:text="#{exiPro}"></label>
                                             <input id="stock" type="number" class="form-control" 
-                                                   th:field="*{stock}" />
+                                                   th:field="*{stock}" th:errorclass="'form-control alert-danger'"/>
+                                            <small class="form-text text-danger" th:errors="*{stock}" 
+                                                   th:if="${#fields.hasErrors('stock')}"></small>
                                         </div>
                                     </div>
 
@@ -66,12 +72,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                         <div class="form">
                                             <label for="linkImagen" class="form-label" th:text="#{imgPro}"></label>
                                             <input id="linkImagen" type="url" class="form-control" 
-                                                   th:field="*{linkImagen}" />
+                                                   th:field="*{linkImagen}" placeholder="https://saboryestilo.com.mx/wp-content/uploads/elementor/thumbs.jpg" />
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="card-footer p-4 d-grid gap-2 d-md-block">
+                                <div class="card-footer p-4 d-grid gap-2 d-md-block ">
                                     
                                     <button type="submit" class="btn btn-primary btn-success btn-block"
                                             th:text="#{savePro}">
