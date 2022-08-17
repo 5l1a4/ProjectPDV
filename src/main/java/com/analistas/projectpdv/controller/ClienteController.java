@@ -4,6 +4,8 @@
  */
 package com.analistas.projectpdv.controller;
 
+import com.analistas.projectpdv.model.service.IClienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,9 +21,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes({"cliente"})
 public class ClienteController {
     
+    @Autowired
+    IClienteService clienteService;
+    
+    
     @GetMapping("/listado")
-    public String listarClientes(){
+    public String listarClientes(Model model){
 
+        model.addAttribute("clientes", clienteService.buscarTodos());
         return "clientes/list";
     }
     

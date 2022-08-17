@@ -15,29 +15,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         
-        <div layout:fragment="contenido" class="productos">
+        <div layout:fragment="contenido">
 
             <div class="container-fluid">  
                 <div class="row">
                     <div class="col-12">
                         <div class="card m-4">
-                            
+
                             <div class="card-header">
                                 <h5 class="card-title" th:text="#{subPro}"></h5>
                             </div>
-                            
+
                             <div class="card-body table-responsive">
-                                <table id="tablaProductos" class="table table-striped table-hover 
+                                <table id="tablaProductos" class="table table-striped table-hover
                                        table-bordered table-sm" style="width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th style="width: 10px;">Imagen</th>
-                                            <th>Cod Barra</th>
-                                            <th>Productos</th>
-                                            <th>Precio</th> 
-                                            <th>Existencias</th>
-                                            <th>Opciones</th>
+                                            <th style="width: 10px;" th:text="#{imgPro}"></th>
+                                            <th th:text="#{codPro}"></th>
+                                            <th th:text="#{titlePro}"></th>
+                                            <th th:text="#{prePro}"></th> 
+                                            <th th:text="#{exiPro}"></th>
+                                            <th th:text="#{opc}"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -51,36 +51,36 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             <td th:text="${p.precio}"></td>
                                             <td th:text="${p.stock}"></td>
                                             <td>
-                                                <div class="d-grid gap-2 d-md-block" >
-                                                    
+                                                <div class="d-grid gap-2 d-md-block m-2" >
+
                                                     <a th:href="@{/productos/editar/} + ${p.id}"
-                                                       th:text="#{editPro}" class="btn btn-warning m-2"
+                                                       th:text="#{edit}" class="btn btn-warning m-1"
                                                        data-bs-toogle="tooltip" data-bs-placement="bottom">
                                                     </a>
-                                                    
-                                                    <a th:href="@{/productos/del/} + ${p.id}" 
-                                                       th:text="#{delPro}" class="btn btn-danger m-2"
+
+                                                    <a th:href="@{/productos/del/} + ${p.id}"  
+                                                       th:text="#{del}" class="btn btn-danger m-1"
                                                        data-bs-toogle="tooltip" data-bs-placement="bottom"
-                                                       onclick="return confirm('¿Estas seguro de Borrar el Producto?');">
+                                                       onclick="return confirm('¿Estas seguro de Borrar el Producto?');">                                                       
                                                     </a>
-                                                    
-                                                    <a class="btn btn-success m-2" data-bs-toogle="tooltip" 
-                                                       data-bs-placement="bottom" th:text="#{inhPro}">
+
+                                                    <a class="btn btn-success m-1" data-bs-toogle="tooltip" id="deletePro"
+                                                       data-bs-placement="bottom" th:text="#{inh}">
                                                     </a>
-                                                    
+
                                                 </div>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table> 
                             </div>
-                            
+
                             <div class="card-footer ">
                                 <a th:href="@{/productos/nuevo}" class="btn btn-outline-primary float-end" 
                                    th:text="#{newPro}">
                                 </a>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

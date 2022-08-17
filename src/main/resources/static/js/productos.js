@@ -24,4 +24,28 @@ $(document).ready(function () {
         }
     });
 });
+
+
 //////////////////////////Sweet Alert2/////////////////////////////    
+
+$("#deletePro").click(function(){
+    swal.fire({
+        title: '¡Advertencia!',
+        text: "¿Quieres eliminar este Producto?, No podras revertir la acción",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#218838',
+        confirmButtonText: 'Eliminar',
+        cancelButtonColor: '#dc3545',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true,
+        padding: '1rem',
+        width: '31%',
+        backdrop: true,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        stopKeydownPropagation: false,
+        showConfirmButton: true
+    });
+});

@@ -14,7 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
         <!-- Style form -->
-        <link th:href="@{/css/style.productos.form.css}" rel="stylesheet" type="text/css"/>
+        <link th:href="@{/css/style.form.css}" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div layout:fragment="contenido" class="cuerpo">
@@ -30,25 +30,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 </div>
 
                                 <div class="card-body p-4">
-                                    <div class="col-md-7 mb-4">
+                                    <div class="col-md-4 mb-4">
                                         <div class="form">
                                             <label for="des" class="form-label" th:text="#{desPro}"></label>
-                                            <input id="des" type="text" class="form-control" 
+                                            <input id="des" type="text" class="form-control"
                                                    th:field="*{descripcion}" th:errorclass="'form-control alert-danger'"/>
                                             <small class="form-text text-danger" th:errors="*{descripcion}" 
                                                    th:if="${#fields.hasErrors('descripcion')}"></small>
+                                            <p class="cont" id="resultDes">0/65</p>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-7 mb-4">
+                                    <div class="col-md-4 mb-4">
                                         <div class="form">
                                             <label for="codBarras" class="form-label" th:text="#{codPro}"></label>
-                                            <input id="codBarras" type="text" class="form-control" 
+                                            <input id="codBarras" type="text" class="form-control"
                                                    th:field="*{codigoBarras}" placeholder="Ejemplo: 1006736351235" />
+                                            <p class="cont" id="resultCodBarras">0/13</p>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-7 mb-4">
+                                    <div class="col-md-4 mb-4">
                                         <div class="form">
                                             <label for="precio" class="form-label" th:text="#{prePro}"></label>
                                             <input id="precio" type="text" class="form-control" 
@@ -58,7 +60,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                         </div>
                                     </div>
 
-                                    <div class="col-md-7 mb-4">
+                                    <div class="col-md-4 mb-4">
                                         <div class="form">
                                             <label for="stock" class="form-label" th:text="#{exiPro}"></label>
                                             <input id="stock" type="number" class="form-control" 
@@ -83,7 +85,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             th:text="#{savePro}">
                                     </button>
                                     <a th:href="@{/productos/listado}" class="btn btn-alert btn-secondary 
-                                       btn-block" th:text="#{canPro}">
+                                       btn-block" th:text="#{can}">
                                     </a>
                                     
                                 </div>
@@ -96,6 +98,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </div>   
 
         </div>
-        <script th:fragment="js"></script>
+        <!-- JS -->
+        <script th:fragment="js" th:src="@{/js/forms.js}"></script>
     </body>
 </html>

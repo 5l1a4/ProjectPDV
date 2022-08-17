@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html
+    lang="es"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout/layout}">
+    <head>
+        <title th:text="#{title}">TODO supply a title</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <!-- Style form -->
+        <link th:href="@{/css/style.form.css}" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div layout:fragment="contenido" class="cuerpo">
+            
+            <div class="container-fluid mt-2">
+                <div class="row justify-content-center">
+                    <div class="col ">
+                        <div class="card">
+                            <form th:action="@{/clientes/form}" method="post" th:object="${cliente}">
+                                
+                                <div class="card-header">
+                                    <h2 class="m-2" th:text="#{newPro}"></h2>
+                                </div>
+
+                                <div class="card-body p-4">
+                                    <div class="col-md-7 mb-4">
+                                        <div class="form">
+                                            <label for="nom" class="form-label" th:text="#{}"></label>
+                                            <input id="nom" type="text" class="form-control" 
+                                                   th:field="*{descripcion}" th:errorclass="'form-control alert-danger'"/>
+                                            
+                                            <small class="form-text text-danger" th:errors="*{}" 
+                                                   th:if="${#fields.hasErrors('')}"></small>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-7 mb-4">
+                                        <div class="form">
+                                            <label for="" class="form-label" th:text="#{}"></label>
+                                            <input id="" type="text" class="form-control" 
+                                                   th:field="*{}" placeholder="Ejemplo: 1006736351235" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-7 mb-4">
+                                        <div class="form">
+                                            <label for="" class="form-label" th:text="#{}"></label>
+                                            <input id="" type="text" class="form-control" 
+                                                   th:field="*{}" th:errorclass="'form-control alert-danger'"/>
+                                            <small class="form-text text-danger" th:errors="*{}" 
+                                                   th:if="${#fields.hasErrors('')}"></small>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-7 mb-4">
+                                        <div class="form">
+                                            <label for="" class="form-label" th:text="#{}"></label>
+                                            <input id="" type="number" class="form-control" 
+                                                   th:field="*{}" th:errorclass="'form-control alert-danger'"/>
+                                            <small class="form-text text-danger" th:errors="*{}" 
+                                                   th:if="${#fields.hasErrors('')}"></small>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-7 mb-4">
+                                        <div class="form">
+                                            <label for="" class="form-label" th:text="#{}"></label>
+                                            <input id="" type="url" class="form-control" 
+                                                   th:field="*{}" placeholder="https://saboryestilo.com.mx/wp-content/uploads/elementor/thumbs.jpg" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer p-4 d-grid gap-2 d-md-block ">
+                                    
+                                    <button type="submit" class="btn btn-primary btn-success btn-block"
+                                            th:text="#{saveCli}">
+                                    </button>
+                                    <a th:href="@{}" class="btn btn-alert btn-secondary 
+                                       btn-block" th:text="#{can}">
+                                    </a>
+                                    
+                                </div>
+                                
+                            </form>       
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>   
+
+        </div>
+        <script th:fragment="js"></script>
+    </body>
+</html>
