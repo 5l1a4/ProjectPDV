@@ -24,56 +24,71 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <div class="col ">
                         <div class="card">
                             <form th:action="@{/clientes/form}" method="post" th:object="${cliente}">
-                                
+                               
                                 <div class="card-header">
-                                    <h2 class="m-2" th:text="#{newPro}"></h2>
+                                    <h2 class="m-2" th:text="#{newCli}"></h2>
                                 </div>
 
                                 <div class="card-body p-4">
-                                    <div class="col-md-7 mb-4">
+                                    <div class="col-md-4 mb-4">
                                         <div class="form">
-                                            <label for="nom" class="form-label" th:text="#{}"></label>
-                                            <input id="nom" type="text" class="form-control" 
-                                                   th:field="*{descripcion}" th:errorclass="'form-control alert-danger'"/>
-                                            
-                                            <small class="form-text text-danger" th:errors="*{}" 
-                                                   th:if="${#fields.hasErrors('')}"></small>
+                                            <label for="nom" class="form-label" th:text="#{nomCli}"></label>
+                                            <input id="nom" type="text" class="form-control" th:field="*{nombre}"
+                                                   th:errorclass="'form-control alert-danger'"/>
+                                            <small class="form-text text-danger" th:errors="*{nombre}" 
+                                                   th:if="${#fields.hasErrors('nombre')}"></small>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-7 mb-4">
+                                    <div class="col-md-4 mb-4">
                                         <div class="form">
-                                            <label for="" class="form-label" th:text="#{}"></label>
-                                            <input id="" type="text" class="form-control" 
-                                                   th:field="*{}" placeholder="Ejemplo: 1006736351235" />
+                                            <label for="ape" class="form-label" th:text="#{apeCli}"></label>
+                                            <input id="ape" type="text" class="form-control" th:field="*{apellido}" 
+                                                   th:errorclass="'form-control alert-danger'"/>
+                                            <small class="form-text text-danger" th:errors="*{apellido}" 
+                                                   th:if="${#fields.hasErrors('apellido')}"></small>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-7 mb-4">
+                                    <div class="col-md-4 mb-4">
                                         <div class="form">
-                                            <label for="" class="form-label" th:text="#{}"></label>
-                                            <input id="" type="text" class="form-control" 
-                                                   th:field="*{}" th:errorclass="'form-control alert-danger'"/>
-                                            <small class="form-text text-danger" th:errors="*{}" 
-                                                   th:if="${#fields.hasErrors('')}"></small>
+                                            <label for="tel" class="form-label" th:text="#{telCli}"></label>
+                                            <input id="tel" type="text" class="form-control" th:field="*{telefono}"
+                                                   th:errorclass="'form-control alert-danger'"/>
+                                            <small class="form-text text-danger" th:errors="*{telefono}" 
+                                                   th:if="${#fields.hasErrors('telefono')}"></small>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-7 mb-4">
+                                    <div class="col-md-4 mb-4">
                                         <div class="form">
-                                            <label for="" class="form-label" th:text="#{}"></label>
-                                            <input id="" type="number" class="form-control" 
-                                                   th:field="*{}" th:errorclass="'form-control alert-danger'"/>
-                                            <small class="form-text text-danger" th:errors="*{}" 
-                                                   th:if="${#fields.hasErrors('')}"></small>
+                                            <label for="nroDoc" class="form-label" th:text="#{docCli}"></label>
+                                            <input id="nroDoc" type="text" class="form-control" th:field="*{nroDocumento}" 
+                                                   th:errorclass="'form-control alert-danger'"/>
+                                            <small class="form-text text-danger" th:errors="*{nroDocumento}" 
+                                                   th:if="${#fields.hasErrors('nroDocumento')}"></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-4 mb-4">
+                                        <div class="form">
+                                            <label for="domi" class="form-label" th:text="#{domCli}"></label>
+                                            <input id="domi" type="text" class="form-control" th:field="*{domicilio}" />
                                         </div>
                                     </div>
 
-                                    <div class="col-md-7 mb-4">
+                                    <div class="col-md-4 mb-4">
                                         <div class="form">
-                                            <label for="" class="form-label" th:text="#{}"></label>
-                                            <input id="" type="url" class="form-control" 
-                                                   th:field="*{}" placeholder="https://saboryestilo.com.mx/wp-content/uploads/elementor/thumbs.jpg" />
+                                            <label for="email" class="form-label" th:text="#{emaCli}"></label>
+                                            <input id="email" type="email" class="form-control" th:field="*{email}" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-5 mb-4">
+                                        <div class="form">
+                                            <label for="nota" class="form-label" th:text="#{notaCli}"></label>
+                                            <input id="nota" type="text" class="form-control" th:field="*{nota}" /> 
+                                            <p id="resNot">0/220</p>
                                         </div>
                                     </div>
                                 </div>
@@ -83,7 +98,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     <button type="submit" class="btn btn-primary btn-success btn-block"
                                             th:text="#{saveCli}">
                                     </button>
-                                    <a th:href="@{}" class="btn btn-alert btn-secondary 
+                                    <a th:href="@{/clientes/listado}" class="btn btn-alert btn-secondary 
                                        btn-block" th:text="#{can}">
                                     </a>
                                     
@@ -97,6 +112,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </div>   
 
         </div>
-        <script th:fragment="js"></script>
+        
+        <!-- JS -->
+        <script th:fragment="js" th:src="@{/js/clientes.js}"></script>
+        
     </body>
 </html>

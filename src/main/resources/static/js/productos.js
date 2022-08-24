@@ -6,8 +6,8 @@
 
 /////////////////////////dataTables////////////////////
 $(document).ready(function () {
-    $('#tablaProductos').DataTable( {
-        lengthMenu: [3, 6, 9, 12, 24, 50],
+    $('#tablaProductos').DataTable({
+        lengthMenu: [3, 6, 9, 12, 24],
         language: {
             "search": "Buscar: ",
             "lengthMenu": "Mostrar _MENU_ registros",
@@ -15,7 +15,7 @@ $(document).ready(function () {
             "zeroRecords": "No hay registros",
             "infoEmpty": "No hay registros",
             "infoFiltered": "(Encontrados _MAX_ de registros)",
-            "paginate":{
+            "paginate": {
                 "first": "Primero",
                 "last": "Ultimo",
                 "previous": "Anterior",
@@ -23,29 +23,64 @@ $(document).ready(function () {
             }
         }
     });
+
+    //JQuery mask//
+    $('#precio').mask("#.##0,00", {reverse: true});
+    $('#stock').mask('00');
+    $('#codBarras').mask('0000000000000');
+
+});
+//////////////////////////contadores/////////////////////////////////
+
+//contador descripcion
+var textoDes = document.getElementById("des");
+var resDes = document.getElementById("resDes");
+var limitDes = 65;
+resDes.textContent = 0 + "/" + limitDes;
+
+textoDes.addEventListener("input", function () {
+    var tamDes = textoDes.value.length;
+    resDes.textContent = tamDes + "/" + limitDes;
+
+    if (tamDes >= limitDes) {
+        textoDes.style.borderColor = "#ff2851";
+        resDes.style.color = "#ff2851";
+    } else {
+        textoDes.style.borderColor = "#b2b2b2";
+        resDes.style.color = "#737373";
+    }
+
 });
 
+//contador codigo Barras
+var textCod = document.getElementById("codBarras");
+var resCod = document.getElementById("resultCodBarras");
+var limitCod = 13;
+resCod.textContent = 0 + "/" + limitCod;
 
-//////////////////////////Sweet Alert2/////////////////////////////    
+textCod.addEventListener("input", function () {
+    var tamCod = textCod.value.length;
+    resCod.textContent = tamCod + "/" + limitCod;
 
-$("#deletePro").click(function(){
-    swal.fire({
-        title: '¡Advertencia!',
-        text: "¿Quieres eliminar este Producto?, No podras revertir la acción",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#218838',
-        confirmButtonText: 'Eliminar',
-        cancelButtonColor: '#dc3545',
-        cancelButtonText: 'Cancelar',
-        reverseButtons: true,
-        padding: '1rem',
-        width: '31%',
-        backdrop: true,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        allowEnterKey: false,
-        stopKeydownPropagation: false,
-        showConfirmButton: true
-    });
+    if (tamCod !== limitCod) {
+        textCod.style.borderColor = "#ff2851";
+        resCod.style.color = "#ff2851";
+    } else {
+        textCod.style.borderColor = "#b2b2b2";
+        resCod.style.color = "#737373";
+    }
 });
+
+//Sweet Alert2//
+
+function btnSuccess() {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Producto agregado con Exito!',
+        showConfirmButton: false,
+        timer: 1500
+    })
+
+}
+;

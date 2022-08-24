@@ -33,19 +33,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     <div class="col-md-4 mb-4">
                                         <div class="form">
                                             <label for="des" class="form-label" th:text="#{desPro}"></label>
-                                            <input id="des" type="text" class="form-control"
-                                                   th:field="*{descripcion}" th:errorclass="'form-control alert-danger'"/>
+                                            <input id="des" type="text" class="form-control" th:field="*{descripcion}"
+                                                    th:errorclass="'form-control alert-danger'"/>
                                             <small class="form-text text-danger" th:errors="*{descripcion}" 
                                                    th:if="${#fields.hasErrors('descripcion')}"></small>
-                                            <p class="cont" id="resultDes">0/65</p>
+                                            <p class="cont" id="resDes">0/65</p>
                                         </div>
                                     </div>
 
                                     <div class="col-md-4 mb-4">
                                         <div class="form">
                                             <label for="codBarras" class="form-label" th:text="#{codPro}"></label>
-                                            <input id="codBarras" type="text" class="form-control"
-                                                   th:field="*{codigoBarras}" placeholder="Ejemplo: 1006736351235" />
+                                            <input id="codBarras" type="text" class="form-control" th:field="*{codigoBarras}" 
+                                                   placeholder="1006736351235"/>
                                             <p class="cont" id="resultCodBarras">0/13</p>
                                         </div>
                                     </div>
@@ -53,8 +53,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     <div class="col-md-4 mb-4">
                                         <div class="form">
                                             <label for="precio" class="form-label" th:text="#{prePro}"></label>
-                                            <input id="precio" type="text" class="form-control" 
-                                                   th:field="*{precio}" th:errorclass="'form-control alert-danger'"/>
+                                            <input id="precio" type="text" class="form-control" th:field="*{precio}" 
+                                                   th:errorclass="'form-control alert-danger'"/>
                                             <small class="form-text text-danger" th:errors="*{precio}" 
                                                    th:if="${#fields.hasErrors('precio')}"></small>
                                         </div>
@@ -63,18 +63,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     <div class="col-md-4 mb-4">
                                         <div class="form">
                                             <label for="stock" class="form-label" th:text="#{exiPro}"></label>
-                                            <input id="stock" type="number" class="form-control" 
-                                                   th:field="*{stock}" th:errorclass="'form-control alert-danger'"/>
-                                            <small class="form-text text-danger" th:errors="*{stock}" 
-                                                   th:if="${#fields.hasErrors('stock')}"></small>
+                                            <input id="stock" type="text" class="form-control" th:field="*{stock}"/>
                                         </div>
                                     </div>
 
                                     <div class="col-md-7 mb-4">
                                         <div class="form">
                                             <label for="linkImagen" class="form-label" th:text="#{imgPro}"></label>
-                                            <input id="linkImagen" type="url" class="form-control" 
-                                                   th:field="*{linkImagen}" placeholder="https://saboryestilo.com.mx/wp-content/uploads/elementor/thumbs.jpg" />
+                                            <input id="linkImagen" type="url" class="form-control" th:field="*{linkImagen}" 
+                                                   placeholder="https://saboryestilo.com.mx/wp-content/uploads/elementor/thumbs.jpg" />
                                         </div>
                                     </div>
                                 </div>
@@ -82,10 +79,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <div class="card-footer p-4 d-grid gap-2 d-md-block ">
                                     
                                     <button type="submit" class="btn btn-primary btn-success btn-block"
-                                            th:text="#{savePro}">
+                                            th:text="#{savePro}" >
                                     </button>
-                                    <a th:href="@{/productos/listado}" class="btn btn-alert btn-secondary 
-                                       btn-block" th:text="#{can}">
+                                    <a th:href="@{/productos/listado}" class="btn btn-alert btn-secondary btn-block" 
+                                       th:text="#{can}">
                                     </a>
                                     
                                 </div>
@@ -98,7 +95,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </div>   
 
         </div>
+        
         <!-- JS -->
-        <script th:fragment="js" th:src="@{/js/forms.js}"></script>
+        <script th:fragment="js" th:src="@{/js/productos.js}"></script>
+       
     </body>
 </html>

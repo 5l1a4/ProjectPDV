@@ -15,7 +15,7 @@ public interface IClienteService {
     
     public List<Cliente> buscarTodos();
     
-    public List<Cliente> BuscarPor (String criterio);
+    public List<Cliente> buscarPor (String criterio);
     
     public Cliente buscarPorId(Long id);
     

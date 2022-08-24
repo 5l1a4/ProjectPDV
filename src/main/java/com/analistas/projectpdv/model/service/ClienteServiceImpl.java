@@ -28,21 +28,25 @@ public class ClienteServiceImpl implements IClienteService{
     }
 
     @Override
-    public List<Cliente> BuscarPor(String criterio) {
+    @Transactional(readOnly = true)
+    public List<Cliente> buscarPor(String criterio) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Cliente buscarPorId(Long id) {
         return clienteRepo.findById(id).orElse(null);
     }
 
     @Override
+    @Transactional(readOnly = false)
     public void guardar(Cliente cliente) {
         clienteRepo.save(cliente);
     }
 
     @Override
+    @Transactional
     public void borrarPorId(Long id) {
         clienteRepo.deleteById(id);
     }
