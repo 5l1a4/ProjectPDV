@@ -39,15 +39,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <div class="col col-5">
                                 <div class="form-group">
                                     <small class="card-text" th:text="#{desVen}"></small>
-                                    <textArea class="form-control" rows="3" ></textArea>
+                                    <textArea class="form-control" rows="3" th:field="*{descripcion}"></textArea>
                                 </div>
                             </div>
                             <div class="col col-4">
                                 <div class="row ">
                                     <div class="form-group ">
                                         <small class="card-text" th:text="#{cliVen}" ></small>
-                                        <select class="form-control select2">
-                                            <option th:each="c : ${clientes}" th:vale="${c.id}" th:text="${c}" ></option>
+                                        <select class="form-select select2" th:field="*{cliente}">
+                                            <option th:each="c : ${clientes}" th:value="${c.id}" th:text="${c}" ></option>
                                         </select>
                                     </div>
                                 </div>  
@@ -95,6 +95,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             <td>
                                                 <span id="subtotal_{ID}" >0.00</span>
                                             </td>
+                                            <td class="text-center">
+                                                <a href="#" class="btn btn-sm btn-danger" onclick="lineasUtil.eliminarLinea({ID});">
+                                                    <i class="fa-solid fa-eraser"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -119,7 +124,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         
                     </div>
                     <div class="card-footer">
-                        <a onclick="$('#{form}').submit();" class="btn btn-outline-primary float-end">
+                        <a onclick="$('#form').submit();" class="btn btn-outline-primary float-end">
                             <span th:text="#{regVen}" ></span>
                         </a>
                     </div>
