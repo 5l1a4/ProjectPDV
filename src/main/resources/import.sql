@@ -18,3 +18,12 @@ INSERT INTO `pdv_project`.`clientes` (`act`, `apellido`, `domicilio`, `email`, `
 INSERT INTO `pdv_project`.`clientes` (`act`, `apellido`, `domicilio`, `email`, `nombre`, `nota`, `dni`, `telefono`) VALUES (1, 'Sosa', 'jujuy5542', 'sosita@gmail.com', 'Alexander', 'jeje', '43.512.312', '(362)-4234-123');
 INSERT INTO `pdv_project`.`clientes` (`act`, `apellido`, `domicilio`, `email`, `nombre`, `nota`, `dni`, `telefono`) VALUES (1, 'Da Rosa', 'milei 776', 'anderdaross@gmail.com', 'Anderson', 'caraho', '31.376.123', '(362)-4444-129');
 INSERT INTO `pdv_project`.`clientes` (`act`, `apellido`, `domicilio`, `email`, `nombre`, `nota`, `dni`, `telefono`) VALUES (1, 'Falcon', 'mapuche 333', 'lautifer@gmail.com', 'lautaro', 'añamemuy', '43.734.552', '(362)-7351-933');
+
+-- Roles
+INSERT INTO `pdv_project`.`roles` (`nombre`) VALUES ('ROLE_ADMIN');
+INSERT INTO `pdv_project`.`roles` (`nombre`) VALUES ('ROLE_CAJERO');
+INSERT INTO `pdv_project`.`roles` (`nombre`) VALUES ('ROLE_REPOSITOR');
+
+-- Usuarios
+INSERT INTO `pdv_project`.`usuarios` (`activo`, `clave`, `nombre`, `id_rol`) VALUES (1, '$2a$10$XuZ6w5vCrWPYRrcZxt3NKOFOP4IY0vE1d5dmbbDgkJt1m3NL5ptC6', 'admin', 1);
+INSERT INTO `pdv_project`.`usuarios` (`activo`, `clave`, `nombre`, `id_rol`) VALUES (1, '$2a$10$XuZ6w5vCrWPYRrcZxt3NKOFOP4IY0vE1d5dmbbDgkJt1m3NL5ptC6', 'usuario', 2);

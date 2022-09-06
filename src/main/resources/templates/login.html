@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html
+    lang="es"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{title}">TODO supply a title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Style -->
+    <link th:href="@{/css/style.login.css}" rel="stylesheet" type="text/css"/>
+    
+    <!-- bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+
+</head>
+<body id="body">
+    <div class="wrapper">
+        <div class="logo">
+            <img src="/img/stars.png" alt=""/>
+        </div>
+        <div class="text-center mt-4 name">
+            Estilo Sublime
+        </div>
+        <br>
+            <p th:if="${param.error}" class="text-danger text-center">Usuario o contraseña incorrecta</p>
+            <p th:if="${param.logout}" class="text-danger text-center">Sesión Cerrada</p>
+        <form class="p-3 mt-3" th:action="@{/login}" method="post">
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-user"></span>
+                <input type="text" name="username" id="userName" placeholder="Usuario">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="password" id="pwd" placeholder="Contraseña">
+            </div>
+            <button class="btn mt-3">Iniciar Sesión</button>
+        </form>
+        <!--        <div class="text-center fs-6">
+                    <a href="#">Forget password?</a> or <a href="#">Sign up</a>
+                </div>-->
+    </div>
+    
+    <script th:fragment="js"></script>
+    <!-- JavaScript BS5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    
+</body>
+</html>

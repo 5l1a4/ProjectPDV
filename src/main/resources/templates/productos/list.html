@@ -77,7 +77,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                             <div class="card-footer ">
                                 <a th:href="@{/productos/nuevo}" class="btn btn-outline-primary float-end" 
-                                   th:text="#{newPro}">
+                                   th:text="#{newPro}" sec:authorize="${hasRole('ADMIN')}">
                                 </a>
                             </div>
 

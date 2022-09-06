@@ -47,13 +47,47 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 </head>
 <body id="body">
 
+
     <!-- Sidebar -->
     <header>
         <div class="iconMenu">
             <i class="fa-solid fa-align-justify" id="btnOpen"></i>
         </div>
+
+        <div class="dropdown" id="dropdownUser" aria-expanded="false">
+            <ul class="navbar-nav ms-auto">
+                <a href="#" class="d-flex p-3 link-dark text-decoration-none dropdown-toggle" 
+                   id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img th:src="@{/img/logo user.png}" alt="logo" width="29"/>
+                </a>
+                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+                    <li>
+                        <a class="dropdown-item" href="#">Hola <span sec:authentication="name"></span></a>
+                        <form id="logoutForm" th:action="@{/logout}" method="post" >
+                            <a class="dropdown-item" href="#" onclick="$('#logoutForm').submit();">Cerrar sesión</a>
+                        </form>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+
     </header>
 
+<!--    <div class="dropdown" id="dropdownUser">
+        <a class="btn btn-secondary dropdown-toggle d-md-flex justify-content-md-end" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown link
+        </a>
+
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li>
+                
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Action</a>
+            </li>
+        </ul>
+    </div>-->
+    
+    
     <div class="menuSide" id="menu_side">
 
         <div class="namePage">
@@ -63,13 +97,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
         <div class="optionsMenu">
             
+
             <a th:href="@{/home}" >
                 <div class="option">
                     <i class="fa-solid fa-house-chimney"></i>
                     <h5 th:text="#{titleIni}"></h5>
                 </div>
             </a>   
-                
+
             <a th:href="@{/productos/listado}">
                 <div class="option">
                     <i class="fa-solid fa-book"></i>
@@ -77,7 +112,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
             </a>
 
-            <a th:href="@{/ventas/listado}">
+            <a th:href="@{/ventas/nueva}">
                 <div class="option">
                     <i class="fa-solid fa-money-bill-1-wave"></i>
                     <h5 th:text="#{titleVen}"></h5>
@@ -90,10 +125,41 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <h5 th:text="#{titleCli}"></h5>
                 </div>
             </a>
+            
+            
+
+<!--        <div class="collapse navbar-collapse" id="navbarCollapase">
+                <ul class="navbar-nav ms-auto">
+
+                     Dropdown 
+                    <li class="nav-item dropdown">
+                        <a id="dropdownMenuLink" href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                            <span>Hola </span>
+                            <span sec:authentication="name">chamigo</span>
+                            <i class="fas fa-user m-2"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end ms-4" aria-labelledby="dropdownMenuLink">
+                            <li>
+                                <a class="dropdown-item" href="#">Link 1</a>
+                                <a class="dropdown-item" href="#">Link 1</a>
+                                <form id="logoutForm" th:action="@{/logout}" method="post">
+                                    <a class="dropdown-item" href="#" onclick="$('#logoutForm').submit();">Cerrar Sesión</a>
+                                </form>
+
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>-->
 
         </div>
 
+        
     </div>
+    
+   
+
     
     <!-- Mensajes -->
     <div class="alert alert-success alert-dismissible fade-show" role="alert" th:if="${success != null}">

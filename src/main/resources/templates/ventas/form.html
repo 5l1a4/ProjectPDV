@@ -63,7 +63,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <div class="row">
                             <div class="col col-12">
                                 <div class="form-group">
-                                    <small class="card-text " th:text="#{busVen}"></small>
+                                    <small class="card-text" th:text="#{busVen}"></small>
                                     <input type="text" id="buscar_producto" name="buscar_producto" class="form-control" />
                                 </div>
                             </div>
@@ -108,10 +108,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <table id="tabla" class="table table-bordered table-hover table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Descripción</th>
-                                            <th>Precio</th>
-                                            <th>Cantidad</th>
-                                            <th>SubTotal</th>
+                                            <th th:text="#{desPro}" ></th>
+                                            <th th:text="#{prePro}" ></th>
+                                            <th th:text="#{canPro}" ></th>
+                                            <th th:text="#{subVen}" ></th>
                                         </tr>
                                     </thead>
                                     <tbody>

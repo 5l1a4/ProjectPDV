@@ -5,9 +5,7 @@
 package com.analistas.projectpdv.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
  *
@@ -15,11 +13,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  */
 
 @Controller
-public class HomeController {
+public class LoginController {
     
-    @GetMapping({"/", "/home"})
-    public String home(){
-        
-        return "/home";
+    @GetMapping("/login")
+    public String login(){
+    
+        return"login";
     }
 }
