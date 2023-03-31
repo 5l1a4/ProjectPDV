@@ -4,7 +4,6 @@
  */
 package com.analistas.projectpdv.model.entities;
 
-import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,20 +26,20 @@ public class Cliente {
     private Long id;
     
     @NotBlank(message = "El apellido es requerida...") //not null
-    @Size(max = 30) //varchar(30)
+    @Size(max = 30, min = 4, message = "El apellido debe de tener al menos 4 caracteres") //varchar(30)
     private String apellido;
     
     @NotBlank(message = "El nombre es requerida...") //not null
-    @Size(max = 30) 
+    @Size(max = 30, min = 3, message = "El nombre debe de tener al menos 4 caracteres") 
     private String nombre;
     
     @NotBlank(message = "El documento es requerida...")
-    @Size(max = 10)
+    @Size(max = 10, min = 10, message = "El DNI debe de tener 8 digitos")
     @Column(name = "dni")
     private String nroDocumento;
     
     @NotBlank(message = "El telefono es requerida...")
-    @Size(max = 20)
+    @Size(max = 14, min = 14, message = "El numero de telefono debe de tener 10 digitos ")
     private String telefono;
     
     @Size(max = 65)

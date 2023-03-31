@@ -7,8 +7,8 @@ package com.analistas.projectpdv.model.repository;
 import com.analistas.projectpdv.model.entities.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-/**
- *
+/** 
+  *
  * @author Micholini
  */
 public interface IClienteRespository extends JpaRepository<Cliente, Long>{

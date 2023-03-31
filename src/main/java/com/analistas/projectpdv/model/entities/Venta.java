@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -35,7 +36,8 @@ public class Venta {
     private long id;
     
     @NotNull(message = "La fecha y hora es requerido...")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm z")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss z")
+
     @Column(name = "fecha_hora")
     private LocalDateTime fechaHora;
     

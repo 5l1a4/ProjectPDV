@@ -13,13 +13,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-
         <!-- Style -->
         <link th:href="@{/css/style.form.css}" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
-        <div layout:fragment="contenido" class="cuerpo">
+        <div layout:fragment="contenido" class="ventas">
 
             <form id="form" th:action="@{/ventas/guardar}" th:object="${venta}" method="post">
                 <div class="card">

@@ -14,15 +14,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
         <!-- Style form -->
-        <link th:href="@{/css/style.form.css}" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div layout:fragment="contenido" class="cuerpo">
             
-            <div class="container-fluid mt-2">
+        <!-- <div class="container-fluid mt-2">
                 <div class="row justify-content-center">
                     <div class="col ">
                         <div class="card">
+                            
                             <form th:action="@{/productos/form}" method="post" th:object="${producto}">
                                 
                                 <div class="card-header">
@@ -69,8 +69,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                                     <div class="col-md-7 mb-4">
                                         <div class="form">
-                                            <label for="linkImagen" class="form-label" th:text="#{imgPro}"></label>
-                                            <input id="linkImagen" type="url" class="form-control" th:field="*{linkImagen}" 
+                                            <label for="img" class="form-label" th:text="#{imgPro}"></label>
+                                            <input id="img" name="img" type="url" class="form-control" th:field="*{linkImagen}" 
                                                    placeholder="https://saboryestilo.com.mx/wp-content/uploads/elementor/thumbs.jpg" />
                                         </div>
                                     </div>
@@ -92,12 +92,62 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         
                     </div>
                 </div>
-            </div>   
+            </div> -->
+            
+
+            <!-- crear Modal -->
+            <div>
+                <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- modal header -->
+                            <div class="modal-header ">
+                                <h5 class="modal-title" id="modalTitle">Nuevo producto</h5>
+                            </div>
+
+                            <!-- modal-body -->
+                            <div class="modal-body">
+                                <form id="formNewPro">
+                                    <div class="mb-3">
+                                        <label for="des" class="form-label" th:text="#{desPro}"></label>                                                    
+                                        <input id="des" class="form-control" type="text">                                                    
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="codBar" class="col-form-label">Codigo de Barras</label>
+                                        <input id="codBar" type="text" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="pre" class="col-form-label">Precio</label>
+                                        <input id="pre" type="text" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cant" class="col-form-label">Cantidad</label>
+                                        <input id="cant" type="text" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="urlImg" class="col-form-label">Imagen</label>
+                                        <input id="urlImg" type="url" class="form-control" >
+                                        
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secundary btn-danger btn-block" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary btn-success btn-block">Agregar producto</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
         
         <!-- JS -->
         <script th:fragment="js" th:src="@{/js/productos.js}"></script>
-       
+        
+        
     </body>
 </html>

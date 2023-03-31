@@ -27,3 +27,5 @@ INSERT INTO `pdv_project`.`roles` (`nombre`) VALUES ('ROLE_REPOSITOR');
 -- Usuarios
 INSERT INTO `pdv_project`.`usuarios` (`activo`, `clave`, `nombre`, `id_rol`) VALUES (1, '$2a$10$XuZ6w5vCrWPYRrcZxt3NKOFOP4IY0vE1d5dmbbDgkJt1m3NL5ptC6', 'admin', 1);
 INSERT INTO `pdv_project`.`usuarios` (`activo`, `clave`, `nombre`, `id_rol`) VALUES (1, '$2a$10$XuZ6w5vCrWPYRrcZxt3NKOFOP4IY0vE1d5dmbbDgkJt1m3NL5ptC6', 'usuario', 2);
+
+

@@ -3,91 +3,187 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html
-    lang="es"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org"
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     layout:decorate="~{layout/layout}">
-    <head>
-        <title th:text="#{title}">TODO supply a title</title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    </head>
-    <body>
+
+<head>
+    <title th:text="#{title}">TODO supply a title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link th:href="@{/css/style.prolist.css}" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+
+    <div layout:fragment="contenido">
         
-        <div layout:fragment="contenido">
-
-            <div class="container-fluid">  
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card m-4">
-
-                            <div class="card-header">
-                                <h5 class="card-title" th:text="#{subPro}"></h5>
-                            </div>
-
-                            <div class="card-body table-responsive">
-                                <table id="tablaProductos" class="table table-striped table-hover
-                                       table-bordered table-sm" style="width: 100%;">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th style="width: 10px;" th:text="#{imgPro}"></th>
-                                            <th th:text="#{codPro}"></th>
-                                            <th th:text="#{titlePro}"></th>
-                                            <th th:text="#{prePro}"></th> 
-                                            <th th:text="#{exiPro}"></th>
-                                            <th th:text="#{opc}"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr th:each="p : ${productos}">
-                                            <td th:text="${p.id}"></td>
-                                            <td>
-                                                <img alt="Sin Imagen :/" th:src="@{${p.linkImagen}}" height="150px"/>
-                                            </td>
-                                            <td th:text="${p.codigoBarras}"></td>
-                                            <td th:text="${p.descripcion}"></td>
-                                            <td th:text="${p.precio}"></td>
-                                            <td th:text="${p.stock}"></td>
-                                            <td>
-                                                <div class="d-grid gap-2 d-md-block m-2" >
-
-                                                    <a th:href="@{/productos/editar/} + ${p.id}"
-                                                       th:text="#{edit}" class="btn btn-warning m-1"
-                                                       data-bs-toogle="tooltip" data-bs-placement="bottom">
-                                                    </a>
-
-                                                    <a th:href="@{/productos/del/} + ${p.id}"  
-                                                       th:text="#{del}" class="btn btn-danger m-1"
-                                                       data-bs-toogle="tooltip" data-bs-placement="bottom"
-                                                       onclick="return confirm('¿Estas seguro de Borrar el Producto?');">                                                       
-                                                    </a>
-
-                                                    <button class="btn btn-success m-1" data-bs-toogle="tooltip" 
-                                                            data-bs-placement="bottom" th:text="#{inh}">
-                                                    </button>
-
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table> 
-                            </div>
-
-                            <div class="card-footer ">
-                                <a th:href="@{/productos/nuevo}" class="btn btn-outline-primary float-end" 
-                                   th:text="#{newPro}" sec:authorize="${hasRole('ADMIN')}">
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div th:if="${success}" id="alertaSuccess">
             
         </div>
-        <!-- JS -->
-        <script th:fragment="js" th:src="@{/js/productos.js}"></script>
-    </body>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card m-4" id="centerPro">
+
+                        <div class="card-header">
+                            <h5 class="card-title" th:text="#{subPro}"></h5>
+                        </div>
+
+                        <div class="card-body table-responsive">
+                            <table id="tablaProductos" class="table table-striped table-hover table-bordered table-sm align-items-center" >
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th style="width: 10px;" th:text="#{imgPro}"></th>
+                                        <th th:text="#{codPro}"></th>
+                                        <th th:text="#{titlePro}"></th>
+                                        <th th:text="#{prePro}"></th>
+                                        <th th:text="#{exiPro}"></th>
+                                        <th th:text="#{opc}"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recordsTable">
+                                    <tr th:each="p : ${productos}" th:class="${p.activo} ? '' : 'tachado'">
+                                        <td th:text="${p.id}" th:class="${p.activo} ? '' : 'tachado'"></td>
+                                        <td>
+                                            <img alt="Sin Imagen :/" th:src="@{${p.linkImagen}}" height="150px" />
+                                        </td>
+                                        <td th:text="${p.codigoBarras}" th:class="${p.activo} ? '' : 'tachado'"></td>
+                                        <td th:text="${p.descripcion}" th:class="${p.activo} ? '' : 'tachado'"></td>
+                                        <td th:text="${p.precio}" th:class="${p.activo} ? '' : 'tachado'"></td>
+                                        <td th:text="${p.stock}" th:class="${p.activo} ? '' : 'tachado'"></td>
+                                        <td>
+                                            <div class="d-grid gap-2 d-md-block m-2">
+
+                                                <!-- <a th:href="@{/productos/editar/} + ${p.id}" th:text="#{edit}"
+                                                    class="btn btn-warning m-1" data-bs-toogle="tooltip"
+                                                    data-bs-placement="bottom">
+                                                </a> -->
+
+                                                <button class="btn btn-warning m-1 edit-pro" data-toggle="modal" data-target="#proModal" 
+                                                    data-id="[[${p.id}]]" th:text="#{edit}">
+                                                </button>
+                                                
+                                                <a th:href="@{/productos/activo/} + ${p.id}" th:if="${p.activo == true}" th:text="#{del}"
+                                                    class="btn btn-danger m-1" data-bs-toogle="tooltip"
+                                                    data-bs-placement="bottom"
+                                                    onclick="return confirm('¿Estas seguro de borrar el producto?');">
+                                                </a>
+                                                
+                                                <a th:href="@{/productos/activo/} + ${p.id}" th:if="${p.activo != true}" th:text="Habilitar"
+                                                    class="btn btn-primary m-1" data-bs-toogle="tooltip"
+                                                    data-bs-placement="bottom"
+                                                    onclick="return confirm('¿Estas seguro de habilitar éste producto?');">
+                                                </a>
+
+                                                <!-- comment -->
+
+                                                <!-- <button class="btn btn-success m-1" data-bs-toogle="tooltip"
+                                                    data-bs-placement="bottom" th:text="#{inh}">
+                                                </button> -->
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="card-footer ">
+                            <!--<a th:href="@{/productos/nuevo}" class="btn btn-outline-primary float-end" 
+                                   th:text="#{newPro}" sec:authorize="${hasRole('ADMIN')}">
+                            </a>-->
+
+                            <!--Abrir Modal-->
+                            <button class="btn btn-outline-primary float-end" data-bs-toggle="modal" 
+                                    id="btnOpenModal" th:text="#{newPro}" sec:authorize="${hasRole('ADMIN')}">
+                            </button>
+                            <!-- <a id="btn-agregar" class="btn btn-outline-primary float-end" th:text="#{newPro}"> </a> -->
+                            
+                        </div>
+
+                        <!-- ////////////////////////////////// Modal/////////////////////////////////////////// -->
+
+                        <div class="modal fade" id="modalRegPro" role="dialog" tabindex="-1" aria-hidden="true" >
+                            <s pan class="close"></s>
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!-- modal header -->
+                                    <div class="modal-header ">
+                                        <h5 class="modal-title">Nuevo producto</h5>
+                                    </div>
+
+                                    <!-- modal body -->
+                                    <div class="modal-body">
+                                        <form id="form" action="#">
+                                            <div class="mb-3">
+                                                <div class="form-group">
+                                                    <label for="des" class="col-form-label" th:text="#{desPro}"></label>
+                                                    <div class="input-group form-group">
+                                                         <input id="des" type="text" class="form-control" >
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="form-group">
+                                                    <label for="codBar" class="col-form-label">Codigo de Barras</label>
+                                                    <div class="input-group form-group">
+                                                        <input id="codBar" type="text" class="form-control" data-mask="#############" maxlength="13">
+                                                    </div>                                                    
+                                                </div>                                                
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="form-group">
+                                                    <label for="pre" class="col-form-label">Precio</label>
+                                                    <div class="input-group form-group">
+                                                        <input id="pre" type="text" class="form-control" data-mask="#.##0,00" data-mask-reverse="true" >    
+                                                    </div>                                                    
+                                                </div>                                                
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="form-group">
+                                                    <label for="cant" class="col-form-label">Cantidad</label>
+                                                    <div class="input-group form-group">
+                                                        <input id="cant" type="text" class="form-control">    
+                                                    </div>                                                    
+                                                </div>                                                
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="form-group">
+                                                    <label for="urlImg" class="col-form-label">Imagen</label>
+                                                    <div class="input-group form-group">
+                                                        <input id="urlImg" type="url" class="form-control">    
+                                                    </div>                                                    
+                                                </div>                                                
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secundary btn-danger btn-block" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" id="btnGuardar" class="btn btn-primary btn-success ">Agregar producto</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+    <!-- SWEET ALERT -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js"></script>
+
+    <!-- JS -->
+    <script th:src="@{/js/productos.js}" th:fragment="js"></script>
+
+</body>
+
 </html>

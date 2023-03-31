@@ -8,20 +8,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:th="http://www.thymeleaf.org"
     layout:decorate="~{layout/layout}">
-    <head>
-        <title th:text="#{title}">TODO supply a title</title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <title th:text="#{title}">TODO supply a title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Style home -->
+    <link th:href="@{/css/style.home.css}" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+    <div layout:fragment="contenido" class="home">
         
-        <!-- Style home -->
-        <link th:href="@{/css/style.home.css}" rel="stylesheet" type="text/css"/>
-        
-    </head>
-    <body>
-        <div layout:fragment="contenido" class="home">
-            <p>casita</p>
-        </div>
-        
-        <script th:fragment="js"></script>
-    </body>
+        <section>
+            <div></div>
+        </section>
+
+    </div>
+
+    <script th:fragment="js"></script>
+</body>
 </html>

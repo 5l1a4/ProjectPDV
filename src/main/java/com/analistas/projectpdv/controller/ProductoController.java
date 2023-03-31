@@ -8,6 +8,7 @@ import com.analistas.projectpdv.model.entities.Producto;
 import com.analistas.projectpdv.model.service.IProductoService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,38 +34,27 @@ public class ProductoController {
     @GetMapping("/listado")
     public String listarProductos(Model model){
     
-        model.addAttribute("productos", productoService.buscarTodos());
-        
+        model.addAttribute("productos", productoService.buscarTodos());        
         return "productos/list";
     }
-    
+
     @GetMapping("/nuevo")
-    public String nuevoProducto(Model model){
+    public ResponseEntity<?> nuevoProducto(Model model){
     
-        model.addAttribute("producto", new Producto());
-        return"productos/form";
+        Producto producto = new Producto();
+        return ResponseEntity.ok(producto);
+        
     }
     
     @PostMapping("/form")
-    public String guardarProducto(@Valid Producto producto, BindingResult result,
-            Model model, RedirectAttributes redirect ){
-    
-        //verificación de Errores
-        if(result.hasErrors()){
-            model.addAttribute("danger", "Datos erroneos");
-            return "productos/form";
-        }
-        
-        if(producto.getId() == null || producto.getId() == 0){
-            redirect.addFlashAttribute("success", "Producto añadido con exito");
-        }else{
-            redirect.addFlashAttribute("warning", "Producto modificado correctamente");
-        }
+    public ResponseEntity<?> guardarProducto(@Valid Producto producto, BindingResult result,
+            Model model, RedirectAttributes redirect ) {    
         
         productoService.guardar(producto);
-        return"redirect:/productos/listado";
+        return ResponseEntity.ok().build();
     }
-    
+
+
     @GetMapping("/del/{id}")
     public String borrarProducto(@PathVariable("id") long id, Model model, RedirectAttributes redirect){
                 
@@ -83,5 +73,15 @@ public class ProductoController {
         
         model.addAttribute("producto", producto);          
         return "productos/form";
+    }
+    
+    @GetMapping("/activo/{id}")
+    public String activo(@PathVariable("id") Long id) {
+
+        Producto p = productoService.buscarPorId(id);
+        p.setActivo(!p.isActivo());
+        productoService.guardar(p);
+
+        return "redirect:/productos/listado";
     }
 }

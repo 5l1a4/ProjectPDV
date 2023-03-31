@@ -34,7 +34,7 @@ header{
 }
 
 #dropdownUser{
-    position:absolute;
+    position: initial;
     bottom:11px;
     left:150px;
 }
@@ -146,6 +146,12 @@ a.selected{
     left: -30px;
 }
 
+/*Tachado*/
+.tachado {
+    color: #CA3E47;
+    font-weight: bold;
+    
+}
 
 /*//clases imaginarias para javascript//*/
 
