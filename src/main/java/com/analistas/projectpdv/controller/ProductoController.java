@@ -42,13 +42,12 @@ public class ProductoController {
     public ResponseEntity<?> nuevoProducto(Model model){
     
         Producto producto = new Producto();
-        return ResponseEntity.ok(producto);
-        
+        return ResponseEntity.ok(producto);        
     }
     
     @PostMapping("/form")
-    public ResponseEntity<?> guardarProducto(@Valid Producto producto, BindingResult result,
-            Model model, RedirectAttributes redirect ) {    
+    public ResponseEntity<?> guardarProducto(@Valid Producto producto, BindingResult result, Model model, 
+        RedirectAttributes redirect ) {    
         
         productoService.guardar(producto);
         return ResponseEntity.ok().build();
